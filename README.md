@@ -1,16 +1,14 @@
 # TextFieldCounter
-> UITextField character counter with lovable UX ❤️. No math skills is required.
+    > UITextField character counter with lovable UX ❤️. No math skills is required.
 
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url]
 
 ## Features
 
-- [x] Feature 1
-- [x] Feature 2
-- [x] Feature 3
-- [x] Feature 4
-- [x] Feature 5
+- [x] Set max length of UITextField
+- [x] Show a beautiful label about the limits
+- [x] Easy setup with @IBInspectable
 
 ## Requirements
 
@@ -20,19 +18,19 @@
 ## Installation
 
 #### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `YourLibrary` by adding it to your `Podfile`:
+You can use [CocoaPods](http://cocoapods.org/) to install `TextFieldCounter` by adding it to your `Podfile`:
 
 ```ruby
 platform :ios, '8.0'
 use_frameworks!
-pod 'YourLibrary'
+pod 'TextFieldCounter'
 ```
 
-To get the full benefits import `YourLibrary` wherever you import UIKit
+To get the full benefits import `TextFieldCounter` wherever you import UIKit
 
 ``` swift
 import UIKit
-import YourLibrary
+import TextFieldCounter
 ```
 #### Carthage
 Create a `Cartfile` that lists the framework and run `carthage update`. Follow the [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios) to add `$(SRCROOT)/Carthage/Build/iOS/YourLibrary.framework` to an iOS project.
