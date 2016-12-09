@@ -60,7 +60,25 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     }
     
     private func updateCounterLabel(count: Int) {
-        self.counterLabel.text = "\(count)/\(self.charactersLimit)"
+        if count <= self.charactersLimit {
+            self.counterLabel.text = "\(count)/\(self.charactersLimit)"
+        }
+    }
+    
+    private func getTextFieldCharactersCount(textField: UITextField, string: String) -> Int {
+        
+        var textFieldCharactersCount = 0
+        
+        if let textFieldText = textField.text {
+            
+            textFieldCharactersCount = textFieldText.characters.count + string.characters.count
+            
+            if string.isEmpty {
+                textFieldCharactersCount = textFieldCharactersCount - 1
+            }
+        }
+        
+        return textFieldCharactersCount
     }
 
     // MARK: UITextFieldDelegate
@@ -68,11 +86,10 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         var shouldChange = false
-        var textFieldCharactersCount = (textField.text?.characters.count)! + string.characters.count
+        let textFieldCharactersCount = self.getTextFieldCharactersCount(textField: textField, string: string)
         
         if string.isEmpty {
             shouldChange = true
-            textFieldCharactersCount = textFieldCharactersCount - 1
         } else {
             shouldChange = textFieldCharactersCount <= self.charactersLimit
         }
