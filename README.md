@@ -53,13 +53,15 @@ ez.detectScreenShot { () -> () in
 
 ## Contribute
 
-We would love for you to contribute to **TextFieldCounter**, check the ``LICENSE`` file for more info.
+We would ❤️ for you to contribute to **TextFieldCounter**, check the ``LICENSE`` file for more info.
 
-## Meta
-
-Fabrício Serralvo – [serralvo.co](https://serralvo.co) – fabricio.serralvo@gmail.com
+## License
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
+
+## About
+
+Fabrício Serralvo – [serralvo.co](https://serralvo.co) – fabricio.serralvo@gmail.com
 
 [https://github.com/serralvo](https://github.com/serralvo)
 
