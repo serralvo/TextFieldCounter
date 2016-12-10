@@ -30,7 +30,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.rightView = self.counterLabel
-        self.rightViewMode = .always
+        self.rightViewMode = .whileEditing
     }
     
     // MARK: Public Methods
@@ -45,7 +45,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         if let currentFont : UIFont = self.font {
             label.font = currentFont
             label.textColor = self.counterColor
-            label.textAlignment = .center
+            label.textAlignment = .left
             label.lineBreakMode = .byWordWrapping
             label.numberOfLines = 1
         }
@@ -54,14 +54,20 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     }
     
     private func getCounterLabelWidth() -> Int {
-        // TODO: Must refactor this method :)
-        let biggestText : String = "\(self.charactersLimit)/\(self.charactersLimit)"
-        return 10 * biggestText.characters.count
+        let biggestText : NSString = "\(self.charactersLimit)" as NSString
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .left
+        paragraph.lineBreakMode = .byWordWrapping
+        
+        let size: CGSize = biggestText.size(attributes: [NSFontAttributeName: self.font!, NSParagraphStyleAttributeName : paragraph])
+        
+        return Int(size.width) + 15
     }
     
     private func updateCounterLabel(count: Int) {
         if count <= self.charactersLimit {
-            self.counterLabel.text = "\(count)/\(self.charactersLimit)"
+            self.counterLabel.text = "\(count)"
         }
     }
     

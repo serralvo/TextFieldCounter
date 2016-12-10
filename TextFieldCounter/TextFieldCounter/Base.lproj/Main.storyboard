@@ -29,7 +29,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="charactersLimit">
-                                        <integer key="value" value="20"/>
+                                        <integer key="value" value="60"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="Animate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
