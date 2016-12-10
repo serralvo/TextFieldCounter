@@ -13,6 +13,12 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
 
     var counterLabel: UILabel!
     
+    enum AnimationType {
+        case Default
+        case DidReachLimit
+        case Unknown
+    }
+    
     // MARK: IBInspectable: Limits and behaviors
     @IBInspectable public var charactersLimit : Int = 30
     @IBInspectable public var animate : Bool = true
@@ -69,6 +75,8 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         if count <= self.charactersLimit {
             self.counterLabel.text = "\(count)"
         }
+        
+        self.animateCounterLabel(count: count)
     }
     
     private func getTextFieldCharactersCount(textField: UITextField, string: String) -> Int {
@@ -87,6 +95,43 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         return textFieldCharactersCount
     }
 
+    // MARK: Animations
+    
+    private func animateCounterLabel(count: Int) {
+        
+        var animationType : AnimationType = .Unknown
+        
+        if (count >= self.charactersLimit) {
+            animationType = .DidReachLimit
+        } else if (count <= self.charactersLimit) {
+            animationType = .Default
+        }
+        
+        self.animateTo(type: animationType)
+    }
+    
+    private func animateTo(type: AnimationType) {
+        
+        switch type {
+        case .Default:
+            self.animateCounterLabelColor(color: self.counterColor)
+            break
+        case .DidReachLimit:
+            self.animateCounterLabelColor(color: self.limitColor)
+            self.counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
+            break
+        default:
+            print("Ops, nothing to animate")
+            break
+        }
+    }
+    
+    private func animateCounterLabelColor(color: UIColor) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            self.counterLabel.textColor = color
+        }, completion: nil)
+    }
+    
     // MARK: UITextFieldDelegate
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -103,6 +148,19 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         self.updateCounterLabel(count: textFieldCharactersCount)
         
         return shouldChange
+    }
+    
+}
+
+extension UIView {
+    
+    public func shakeTo(transform: CGAffineTransform, duration: TimeInterval) {
+        
+        self.transform = transform
+        
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform.identity
+        }, completion: nil)
     }
     
 }
