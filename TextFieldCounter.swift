@@ -41,6 +41,29 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     // MARK: Public Methods
     
+    init(frame: CGRect, limit: Int, shouldAnimate: Bool, colorOfCounterLabel: UIColor?, colorOfLimitLabel: UIColor?) {
+        
+        super.init(frame: frame)
+        
+        self.charactersLimit = limit
+        self.animate = shouldAnimate
+        
+        if let counterTextColor = colorOfCounterLabel {
+            self.counterColor = counterTextColor
+        } else {
+            self.counterColor = UIColor.lightGray
+        }
+        
+        if let limitTextColor = colorOfLimitLabel {
+            self.limitColor = limitTextColor
+        } else {
+            self.limitColor = UIColor.red
+        }
+        
+        super.delegate = self
+        self.counterLabel = self.setupCounterLabel()
+    }
+    
     // MARK: Private Methods
     
     private func setupCounterLabel() -> UILabel! {
@@ -99,15 +122,18 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     private func animateCounterLabel(count: Int) {
         
-        var animationType : AnimationType = .Unknown
-        
-        if (count >= self.charactersLimit) {
-            animationType = .DidReachLimit
-        } else if (count <= self.charactersLimit) {
-            animationType = .Default
+        if (self.animate) {
+            
+            var animationType : AnimationType = .Unknown
+            
+            if (count >= self.charactersLimit) {
+                animationType = .DidReachLimit
+            } else if (count <= self.charactersLimit) {
+                animationType = .Default
+            }
+            
+            self.animateTo(type: animationType)
         }
-        
-        self.animateTo(type: animationType)
     }
     
     private func animateTo(type: AnimationType) {

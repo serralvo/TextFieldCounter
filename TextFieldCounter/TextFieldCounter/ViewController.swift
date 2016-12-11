@@ -12,14 +12,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let frame = CGRect(x: 27, y: 70, width: 320, height: 30)
+        let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, colorOfCounterLabel: UIColor.darkGray, colorOfLimitLabel: UIColor.orange)
+        textField.borderStyle = UITextBorderStyle.roundedRect
+        textField.backgroundColor = UIColor.white
+        textField.placeholder = "Type something my friend :)"
+        
+        self.view.addSubview(textField)
     }
-
 
 }
-
