@@ -39,11 +39,20 @@ import TextFieldCounter
 
 ## Usage example
 
+#### By Inspector
+
+1. Set the class and configure the options
+[inspector-image]
+
+#### Programmatically
+
 ```swift
-import EZSwiftExtensions
-ez.detectScreenShot { () -> () in
-    print("User took a screen shot")
-}
+import TextFieldCounter
+
+let frame = CGRect(x: 20, y: 80, width: 320, height: 30)
+let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, colorOfCounterLabel: UIColor.darkGray, colorOfLimitLabel: UIColor.orange)
+
+self.view.addSubview(textField)
 ```
 
 ## Contribute
@@ -62,3 +71,4 @@ Fabrício Serralvo – [serralvo.co](https://serralvo.co) – fabricio.serralvo@
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
+[inspector-image]:https://github.com/serralvo/TextFieldCounter/blob/master/Images/inspector.png?raw=true
