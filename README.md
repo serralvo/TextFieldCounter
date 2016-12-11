@@ -42,7 +42,8 @@ import TextFieldCounter
 #### By Inspector
 
 1. Set the class and configure the options
-[inspector-image]
+
+![Inspector][inspector-image]
 
 #### Programmatically
 
