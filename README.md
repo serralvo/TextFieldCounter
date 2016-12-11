@@ -1,5 +1,5 @@
 # TextFieldCounter
-    UITextField character counter with lovable UX ❤️. No math skills is required.
+    UITextField character counter with lovable UX ❤️. No math skills required.
 
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url]
