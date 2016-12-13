@@ -21,11 +21,11 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     // MARK: IBInspectable: Limits and behaviors
     @IBInspectable public var maxLength : Int = 30
-    @IBInspectable public var animate : Bool = true
+    @IBInspectable public dynamic var animate : Bool = true
     
     // MARK: IBInspectable: Style
-    @IBInspectable public var counterColor : UIColor! = UIColor.lightGray
-    @IBInspectable public var limitColor: UIColor! = UIColor.red
+    @IBInspectable public dynamic var counterColor : UIColor! = UIColor.lightGray
+    @IBInspectable public dynamic var limitColor: UIColor! = UIColor.red
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -99,7 +99,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             self.counterLabel.text = "\(count)"
         }
         
-        self.animateCounterLabel(count: count)
+        self.prepareToAnimateCounterLabel(count: count)
     }
     
     private func getTextFieldCharactersCount(textField: UITextField, string: String) -> Int {
@@ -120,20 +120,17 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
 
     // MARK: Animations
     
-    private func animateCounterLabel(count: Int) {
+    private func prepareToAnimateCounterLabel(count: Int) {
         
-        if (self.animate) {
-            
-            var animationType : AnimationType = .Unknown
-            
-            if (count >= self.maxLength) {
-                animationType = .DidReachLimit
-            } else if (count <= self.maxLength) {
-                animationType = .Default
-            }
-            
-            self.animateTo(type: animationType)
+        var animationType : AnimationType = .Unknown
+        
+        if (count >= self.maxLength) {
+            animationType = .DidReachLimit
+        } else if (count <= self.maxLength) {
+            animationType = .Default
         }
+        
+        self.animateTo(type: animationType)
     }
     
     private func animateTo(type: AnimationType) {
@@ -144,7 +141,11 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             break
         case .DidReachLimit:
             self.animateCounterLabelColor(color: self.limitColor)
-            self.counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
+            
+            if (self.animate) {
+                self.counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
+            }
+            
             break
         default:
             print("Ops, nothing to animate")
