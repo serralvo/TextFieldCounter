@@ -58,7 +58,7 @@ self.view.addSubview(textField)
 
 ## Contribute
 
-We would ❤️ for you to contribute to **TextFieldCounter**, check the ``LICENSE`` file for more info.
+We would ❤️ to see your contribution! To contribute to **TextFieldCounter**, check the ``LICENSE`` file for more info.
 
 ## License
 
