@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let frame = CGRect(x: 27, y: 70, width: 320, height: 30)
-        let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, colorOfCounterLabel: UIColor.darkGray, colorOfLimitLabel: UIColor.orange)
+        let textField = TextFieldCounter(frame: frame, limit: 0, shouldAnimate: true, colorOfCounterLabel: UIColor.darkGray, colorOfLimitLabel: UIColor.orange)
         textField.borderStyle = UITextBorderStyle.roundedRect
         textField.backgroundColor = UIColor.white
         textField.placeholder = "Type something my friend :)"

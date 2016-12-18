@@ -13,19 +13,33 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
 
     var counterLabel: UILabel!
     
+    // MARK: IBInspectable: Limits and behaviors
+    
+    @IBInspectable public dynamic var animate : Bool = true
+    @IBInspectable public var maxLength : Int = 30 {
+        didSet {
+            if (!self.isValidMaxLength(max: self.maxLength)) {
+                self.maxLength = TextFieldCounter.minLength
+            }
+        }
+    }
+    
+    // MARK: IBInspectable: Style
+    
+    @IBInspectable public dynamic var counterColor : UIColor! = UIColor.lightGray
+    @IBInspectable public dynamic var limitColor: UIColor! = UIColor.red
+    
+    // MARK: Enumerations and Constants
+    
     enum AnimationType {
         case Default
         case DidReachLimit
         case Unknown
     }
     
-    // MARK: IBInspectable: Limits and behaviors
-    @IBInspectable public var maxLength : Int = 30
-    @IBInspectable public dynamic var animate : Bool = true
+    static let minLength = 30
     
-    // MARK: IBInspectable: Style
-    @IBInspectable public dynamic var counterColor : UIColor! = UIColor.lightGray
-    @IBInspectable public dynamic var limitColor: UIColor! = UIColor.red
+    // MARK: Init
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,8 +59,13 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         
         super.init(frame: frame)
         
-        self.maxLength = limit
         self.animate = shouldAnimate
+        
+        if !self.isValidMaxLength(max: limit) {
+            self.maxLength = TextFieldCounter.minLength
+        } else {
+            self.maxLength = limit
+        }
         
         if let counterTextColor = colorOfCounterLabel {
             self.counterColor = counterTextColor
@@ -65,6 +84,10 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     }
     
     // MARK: Private Methods
+    
+    private func isValidMaxLength(max: Int) -> Bool {
+        return max > 0
+    }
     
     private func setupCounterLabel() -> UILabel! {
         
