@@ -23,9 +23,6 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             }
         }
     }
-    
-    // MARK: IBInspectable: Style
-    
     @IBInspectable public dynamic var counterColor : UIColor! = UIColor.lightGray
     @IBInspectable public dynamic var limitColor: UIColor! = UIColor.red
     
@@ -55,16 +52,30 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     // MARK: Public Methods
     
-    init(frame: CGRect, limit: Int, shouldAnimate: Bool, colorOfCounterLabel: UIColor?, colorOfLimitLabel: UIColor?) {
+    /**
+     Initializes a new beautiful *TextFieldCounter*.
+     
+     - parameter frame: The frame of view.
+     - parameter shouldAnimate: Default is `true`.
+     - parameter limit: By default, if the number is not greater than 0, the limit will be `30`.
+     - parameter colorOfCounterLabel: Default color is `UIColor.lightGray`.
+     - parameter colorOfLimitLabel: Default color is `UIColor.red`.
+    */
+    
+    init(frame: CGRect, limit: Int, shouldAnimate: Bool?, colorOfCounterLabel: UIColor?, colorOfLimitLabel: UIColor?) {
         
         super.init(frame: frame)
-        
-        self.animate = shouldAnimate
         
         if !self.isValidMaxLength(max: limit) {
             self.maxLength = TextFieldCounter.minLength
         } else {
             self.maxLength = limit
+        }
+        
+        if let animate = shouldAnimate {
+            self.animate = animate
+        } else {
+            self.animate = true
         }
         
         if let counterTextColor = colorOfCounterLabel {
