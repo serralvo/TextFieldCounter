@@ -16,10 +16,10 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     // MARK: IBInspectable: Limits and behaviors
     
     @IBInspectable public dynamic var animate : Bool = true
-    @IBInspectable public var maxLength : Int = 30 {
+    @IBInspectable public var maxLength : Int = TextFieldCounter.defaultLength {
         didSet {
             if (!self.isValidMaxLength(max: self.maxLength)) {
-                self.maxLength = TextFieldCounter.minLength
+                self.maxLength = TextFieldCounter.defaultLength
             }
         }
     }
@@ -28,13 +28,13 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     // MARK: Enumerations and Constants
     
-    enum AnimationType {
-        case Default
-        case DidReachLimit
-        case Unknown
+    enum animationType {
+        case basic
+        case didReachLimit
+        case unknown
     }
     
-    static let minLength = 30
+    static let defaultLength = 30
     
     // MARK: Init
     
@@ -67,7 +67,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         super.init(frame: frame)
         
         if !self.isValidMaxLength(max: limit) {
-            self.maxLength = TextFieldCounter.minLength
+            self.maxLength = TextFieldCounter.defaultLength
         } else {
             self.maxLength = limit
         }
@@ -156,24 +156,24 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     private func prepareToAnimateCounterLabel(count: Int) {
         
-        var animationType : AnimationType = .Unknown
+        var animationType : animationType = .unknown
         
         if (count >= self.maxLength) {
-            animationType = .DidReachLimit
+            animationType = .didReachLimit
         } else if (count <= self.maxLength) {
-            animationType = .Default
+            animationType = .basic
         }
         
         self.animateTo(type: animationType)
     }
     
-    private func animateTo(type: AnimationType) {
+    private func animateTo(type: animationType) {
         
         switch type {
-        case .Default:
+        case .basic:
             self.animateCounterLabelColor(color: self.counterColor)
             break
-        case .DidReachLimit:
+        case .didReachLimit:
             self.animateCounterLabelColor(color: self.limitColor)
             
             if (self.animate) {
