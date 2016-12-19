@@ -11,7 +11,7 @@ import UIKit
 
 class TextFieldCounter: UITextField, UITextFieldDelegate {
 
-    var counterLabel: UILabel!
+    lazy var counterLabel: UILabel = UILabel()
     
     // MARK: IBInspectable: Limits and behaviors
     
@@ -23,8 +23,8 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             }
         }
     }
-    @IBInspectable public dynamic var counterColor : UIColor! = UIColor.lightGray
-    @IBInspectable public dynamic var limitColor: UIColor! = UIColor.red
+    @IBInspectable public dynamic var counterColor : UIColor = .lightGray
+    @IBInspectable public dynamic var limitColor: UIColor = .red
     
     // MARK: Enumerations and Constants
     
@@ -62,7 +62,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
      - parameter colorOfLimitLabel: Default color is `UIColor.red`.
     */
     
-    init(frame: CGRect, limit: Int, shouldAnimate: Bool?, colorOfCounterLabel: UIColor?, colorOfLimitLabel: UIColor?) {
+    init(frame: CGRect, limit: Int, shouldAnimate: Bool = true, colorOfCounterLabel: UIColor = .lightGray, colorOfLimitLabel: UIColor = .red) {
         
         super.init(frame: frame)
         
@@ -72,26 +72,12 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             self.maxLength = limit
         }
         
-        if let animate = shouldAnimate {
-            self.animate = animate
-        } else {
-            self.animate = true
-        }
-        
-        if let counterTextColor = colorOfCounterLabel {
-            self.counterColor = counterTextColor
-        } else {
-            self.counterColor = UIColor.lightGray
-        }
-        
-        if let limitTextColor = colorOfLimitLabel {
-            self.limitColor = limitTextColor
-        } else {
-            self.limitColor = UIColor.red
-        }
+        self.animate = shouldAnimate
+        self.counterColor = colorOfCounterLabel
+        self.limitColor = colorOfLimitLabel
         
         super.delegate = self
-        self.counterLabel = self.setupCounterLabel()
+        self.counterLabel = setupCounterLabel()
     }
     
     // MARK: Private Methods
@@ -100,14 +86,14 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         return max > 0
     }
     
-    private func setupCounterLabel() -> UILabel! {
+    private func setupCounterLabel() -> UILabel {
         
-        let fontFrame : CGRect = CGRect(x: 0, y: 0, width: self.getCounterLabelWidth(), height: Int(self.frame.height))
+        let fontFrame : CGRect = CGRect(x: 0, y: 0, width: getCounterLabelWidth(), height: Int(frame.height))
         let label : UILabel = UILabel(frame: fontFrame)
         
-        if let currentFont : UIFont = self.font {
+        if let currentFont : UIFont = font {
             label.font = currentFont
-            label.textColor = self.counterColor
+            label.textColor = counterColor
             label.textAlignment = .left
             label.lineBreakMode = .byWordWrapping
             label.numberOfLines = 1
@@ -117,20 +103,20 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     }
     
     private func getCounterLabelWidth() -> Int {
-        let biggestText : NSString = "\(self.maxLength)" as NSString
+        let biggestText = "\(maxLength)"
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .left
         paragraph.lineBreakMode = .byWordWrapping
         
-        let size: CGSize = biggestText.size(attributes: [NSFontAttributeName: self.font!, NSParagraphStyleAttributeName : paragraph])
+        let size: CGSize = biggestText.size(attributes: [NSFontAttributeName: font ?? UIFont.systemFont(ofSize: 12), NSParagraphStyleAttributeName : paragraph])
         
         return Int(size.width) + 15
     }
     
     private func updateCounterLabel(count: Int) {
-        if count <= self.maxLength {
-            self.counterLabel.text = "\(count)"
+        if count <= maxLength {
+            counterLabel.text = "\(count)"
         }
         
         self.prepareToAnimateCounterLabel(count: count)
@@ -158,9 +144,9 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         
         var animationType : animationType = .unknown
         
-        if (count >= self.maxLength) {
+        if (count >= maxLength) {
             animationType = .didReachLimit
-        } else if (count <= self.maxLength) {
+        } else if (count <= maxLength) {
             animationType = .basic
         }
         
@@ -171,13 +157,13 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         
         switch type {
         case .basic:
-            self.animateCounterLabelColor(color: self.counterColor)
+            self.animateCounterLabelColor(color: counterColor)
             break
         case .didReachLimit:
-            self.animateCounterLabelColor(color: self.limitColor)
+            self.animateCounterLabelColor(color: limitColor)
             
-            if (self.animate) {
-                self.counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
+            if (animate) {
+                counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
             }
             
             break
@@ -206,7 +192,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             shouldChange = textFieldCharactersCount <= self.maxLength
         }
         
-        self.updateCounterLabel(count: textFieldCharactersCount)
+        updateCounterLabel(count: textFieldCharactersCount)
         
         return shouldChange
     }
