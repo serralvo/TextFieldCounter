@@ -109,7 +109,11 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         paragraph.alignment = .left
         paragraph.lineBreakMode = .byWordWrapping
         
-        let size: CGSize = biggestText.size(attributes: [NSFontAttributeName: font ?? UIFont.systemFont(ofSize: 12), NSParagraphStyleAttributeName : paragraph])
+        var size : CGSize = CGSize()
+        
+        if let currentFont = self.font {
+            size = biggestText.size(attributes: [NSFontAttributeName: currentFont, NSParagraphStyleAttributeName: paragraph])
+        }
         
         return Int(size.width) + 15
     }
