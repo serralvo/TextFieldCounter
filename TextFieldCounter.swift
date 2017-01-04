@@ -11,15 +11,15 @@ import UIKit
 
 class TextFieldCounter: UITextField, UITextFieldDelegate {
 
-    lazy var counterLabel: UILabel = UILabel()
+    lazy private var counterLabel: UILabel = UILabel()
     
     // MARK: IBInspectable: Limits and behaviors
     
     @IBInspectable public dynamic var animate : Bool = true
     @IBInspectable public var maxLength : Int = TextFieldCounter.defaultLength {
         didSet {
-            if (!self.isValidMaxLength(max: self.maxLength)) {
-                self.maxLength = TextFieldCounter.defaultLength
+            if (!isValidMaxLength(max: maxLength)) {
+                maxLength = TextFieldCounter.defaultLength
             }
         }
     }
@@ -41,13 +41,13 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         super.delegate = self
-        self.counterLabel = self.setupCounterLabel()
+        counterLabel = setupCounterLabel()
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        self.rightView = self.counterLabel
-        self.rightViewMode = .whileEditing
+        rightView = counterLabel
+        rightViewMode = .whileEditing
     }
     
     // MARK: Public Methods
@@ -66,18 +66,18 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         
         super.init(frame: frame)
         
-        if !self.isValidMaxLength(max: limit) {
-            self.maxLength = TextFieldCounter.defaultLength
+        if !isValidMaxLength(max: limit) {
+            maxLength = TextFieldCounter.defaultLength
         } else {
-            self.maxLength = limit
+            maxLength = limit
         }
         
-        self.animate = shouldAnimate
-        self.counterColor = colorOfCounterLabel
-        self.limitColor = colorOfLimitLabel
+        animate = shouldAnimate
+        counterColor = colorOfCounterLabel
+        limitColor = colorOfLimitLabel
         
         super.delegate = self
-        self.counterLabel = setupCounterLabel()
+        counterLabel = setupCounterLabel()
     }
     
     // MARK: Private Methods
@@ -111,7 +111,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         
         var size : CGSize = CGSize()
         
-        if let currentFont = self.font {
+        if let currentFont = font {
             size = biggestText.size(attributes: [NSFontAttributeName: currentFont, NSParagraphStyleAttributeName: paragraph])
         }
         
@@ -123,7 +123,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             counterLabel.text = "\(count)"
         }
         
-        self.prepareToAnimateCounterLabel(count: count)
+        prepareToAnimateCounterLabel(count: count)
     }
     
     private func getTextFieldCharactersCount(textField: UITextField, string: String) -> Int {
@@ -154,17 +154,17 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             animationType = .basic
         }
         
-        self.animateTo(type: animationType)
+        animateTo(type: animationType)
     }
     
     private func animateTo(type: animationType) {
         
         switch type {
         case .basic:
-            self.animateCounterLabelColor(color: counterColor)
+            animateCounterLabelColor(color: counterColor)
             break
         case .didReachLimit:
-            self.animateCounterLabelColor(color: limitColor)
+            animateCounterLabelColor(color: limitColor)
             
             if (animate) {
                 counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
@@ -188,12 +188,12 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         var shouldChange = false
-        let textFieldCharactersCount = self.getTextFieldCharactersCount(textField: textField, string: string)
+        let textFieldCharactersCount = getTextFieldCharactersCount(textField: textField, string: string)
         
         if string.isEmpty {
             shouldChange = true
         } else {
-            shouldChange = textFieldCharactersCount <= self.maxLength
+            shouldChange = textFieldCharactersCount <= maxLength
         }
         
         updateCounterLabel(count: textFieldCharactersCount)
