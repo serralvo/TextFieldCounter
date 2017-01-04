@@ -56,6 +56,12 @@ let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, c
 self.view.addSubview(textField)
 ```
 
+## Next Steps
+
+- Provide delegates
+- Add Tests
+- Add Travis CI
+
 ## Contribute
 
 We would ❤️ to see your contribution! To contribute to **TextFieldCounter**, check the ``LICENSE`` file for more info.
@@ -66,7 +72,9 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 
 ## About
 
-Fabrício Serralvo – [serralvo.co](https://serralvo.co) – fabricio.serralvo@gmail.com
+Created by Fabrício Serralvo – [serralvo.co](https://serralvo.co)
+
+Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@rogerluan](https://github.com/rogerluan)
 
 [swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
 [swift-url]: https://swift.org/
