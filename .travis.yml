@@ -1,5 +1,9 @@
 language: objective-c
 
+branches:
+  only:
+  - master
+
 xcode_project: TextFieldCounter/TextFieldCounter.xcodeproj
 xcode_scheme: TextFieldCounter
 
