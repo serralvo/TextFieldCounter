@@ -12,3 +12,6 @@ xcode_scheme: TextFieldCounter
 
 osx_image: xcode8.2
 xcode_sdk: iphonesimulator9.3
+
+script:
+  - xcodebuild -project TextFieldCounter/TextFieldCounter.xcodeproj -scheme 'TextFieldCounter' -sdk iphonesimulator build test | xcpretty -c && exit ${PIPESTATUS[0]}
