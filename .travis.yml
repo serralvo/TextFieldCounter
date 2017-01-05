@@ -1,5 +1,8 @@
 language: objective-c
 
+before_install:
+  - sudo gem install xcpretty
+
 branches:
   only:
   - master
