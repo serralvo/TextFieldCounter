@@ -3,6 +3,7 @@
 
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url]
+[![Build Status][build-status-image]][build-status-url]
 
 ## Features
 
@@ -60,7 +61,6 @@ self.view.addSubview(textField)
 
 - Provide delegates
 - Add Tests
-- Add Travis CI
 
 ## Contribute
 
@@ -80,4 +80,6 @@ Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@ro
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
+[build-status-image]: https://travis-ci.com/serralvo/TextFieldCounter.svg?token=oCyHwzH6QNpDoULTtWJd&branch=master
+[build-status-url]: https://travis-ci.com/serralvo/TextFieldCounter
 [inspector-image]:https://github.com/serralvo/TextFieldCounter/blob/master/Images/inspector.png?raw=true
