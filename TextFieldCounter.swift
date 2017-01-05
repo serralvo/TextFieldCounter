@@ -215,5 +215,3 @@ extension UIView {
     }
     
 }
-
-Hello, lets test travis!
