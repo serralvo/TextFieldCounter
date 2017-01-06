@@ -11,6 +11,8 @@
 - [x] A beautiful and animated label about the limits
 - [x] Easy setup with @IBInspectable
 
+![TextFieldCounter][demo-image]
+
 ## Requirements
 
 - iOS 8.0+
@@ -83,3 +85,4 @@ Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@ro
 [build-status-image]: https://travis-ci.com/serralvo/TextFieldCounter.svg?token=oCyHwzH6QNpDoULTtWJd&branch=master
 [build-status-url]: https://travis-ci.com/serralvo/TextFieldCounter
 [inspector-image]:https://github.com/serralvo/TextFieldCounter/blob/master/Images/inspector.png?raw=true
+[demo-image]:https://github.com/serralvo/TextFieldCounter/blob/master/Images/demo.gif?raw=true
