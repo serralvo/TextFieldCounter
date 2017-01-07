@@ -16,7 +16,7 @@
 ## Requirements
 
 - iOS 8.0+
-- Xcode 7.3
+- Xcode 8.0
 
 ## Installation
 
@@ -74,7 +74,7 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 
 ## About
 
-Created by Fabrício Serralvo – [serralvo.co](https://serralvo.co)
+Created by Fabricio Serralvo – [serralvo.co](https://serralvo.co)
 
 Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@rogerluan](https://github.com/rogerluan)
 
