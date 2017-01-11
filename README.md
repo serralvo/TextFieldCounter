@@ -83,6 +83,6 @@ Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@ro
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [build-status-image]: https://api.travis-ci.org/serralvo/TextFieldCounter.svg
-[build-status-url]: https://travis-ci.com/serralvo/TextFieldCounter
+[build-status-url]: https://travis-ci.org/serralvo/TextFieldCounter
 [inspector-image]:https://github.com/serralvo/TextFieldCounter/blob/master/Images/inspector.png
 [demo-image]:https://github.com/serralvo/TextFieldCounter/blob/master/Images/demo.gif
