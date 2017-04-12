@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/serralvo/TextFieldCounter.git", :tag => "#{s.version}" }
 
   s.source_files  = "TextFieldCounter.swift"
-  s.exclude_files = "TextFieldCounter"
+  s.exclude_files = "*"
  
 end
