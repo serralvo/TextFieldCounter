@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/serralvo/TextFieldCounter.git", :tag => "#{s.version}" }
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
-  
+  s.source_files  = "TextFieldCounter.swift"
+  s.exclude_files = "TextFieldCounter"
+ 
 end
