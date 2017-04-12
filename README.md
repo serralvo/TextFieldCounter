@@ -1,5 +1,5 @@
 # TextFieldCounter
-    UITextField character counter with lovable UX ❤️. No math skills required.
+    UITextField character counter with lovable UX 💖. No math skills required 🙃.
 
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url]
@@ -17,6 +17,7 @@
 
 - iOS 8.0+
 - Xcode 8.0
+- ARC
 
 ## Installation
 
@@ -38,13 +39,13 @@ import TextFieldCounter
 
 #### Manually
 1. Download and drop ```TextFieldCounter.swift``` in your project.  
-2. Congratulations!  
+2. Congratulations 🚀  
 
 ## Usage example
 
 #### By Inspector
 
-1. Set the class and configure the options
+1. Set the class and configure the options.
 
 ![Inspector][inspector-image]
 
@@ -56,13 +57,14 @@ import TextFieldCounter
 let frame = CGRect(x: 20, y: 80, width: 320, height: 30)
 let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, colorOfCounterLabel: UIColor.darkGray, colorOfLimitLabel: UIColor.orange)
 
-self.view.addSubview(textField)
+view.addSubview(textField)
 ```
 
 ## Next Steps
 
 - Provide delegates
 - Add Tests
+- Add Carthage support
 
 ## Contribute
 
