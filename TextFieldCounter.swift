@@ -13,6 +13,8 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
 
     lazy private var counterLabel: UILabel = UILabel()
     
+    weak var counterDelegate: TextFieldCounterDelegate?
+    
     // MARK: IBInspectable: Limits and behaviors
     
     @IBInspectable public dynamic var animate : Bool = true
@@ -201,6 +203,12 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         return shouldChange
     }
     
+}
+
+// MARK: TextFieldCounterDelegate
+
+protocol TextFieldCounterDelegate : class {
+    func didReachMaxLength(textField: TextFieldCounter)
 }
 
 extension UIView {
