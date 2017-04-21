@@ -143,6 +143,12 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         
         return textFieldCharactersCount
     }
+    
+    private func shouldCheckForMaxLength(count: Int) {
+        if count == maxLength {
+            counterDelegate?.didReachMaxLength(textField: self)
+        }
+    }
 
     // MARK: Animations
     
@@ -174,7 +180,6 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             
             break
         default:
-            print("Ops, nothing to animate")
             break
         }
     }
@@ -199,6 +204,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         }
         
         updateCounterLabel(count: textFieldCharactersCount)
+        shouldCheckForMaxLength(count: textFieldCharactersCount)
         
         return shouldChange
     }
