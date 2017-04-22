@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TextFieldCounterDelegate {
 
+    @IBOutlet weak var textField: TextFieldCounter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.counterDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,4 +22,8 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(colorLiteralRed: 242/255, green: 242/255, blue: 242/255, alpha: 1)
     }
 
+    func didReachMaxLength(textField: TextFieldCounter) {
+        print("didReachMaxLength")
+    }
+    
 }

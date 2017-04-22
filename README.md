@@ -39,7 +39,7 @@ import TextFieldCounter
 
 #### Manually
 1. Download and drop ```TextFieldCounter.swift``` in your project.  
-2. Congratulations 🚀  
+2. Congratulations 🚀 
 
 ## Usage example
 
@@ -60,9 +60,24 @@ let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, c
 view.addSubview(textField)
 ```
 
+#### Delegate
+
+Set `counterDelegate` and enjoy it 🚀:
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    textField.counterDelegate = self
+}
+
+func didReachMaxLength(textField: TextFieldCounter) {
+    print("didReachMaxLength")
+}
+
+```
+
 ## Next Steps
 
-- Provide delegates
 - Add Tests
 - Add Carthage support
 
