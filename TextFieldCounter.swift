@@ -144,8 +144,8 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         return textFieldCharactersCount
     }
     
-    private func shouldCheckForMaxLength(count: Int) {
-        if count == maxLength {
+    private func checkIfNeedsCallDidReachMaxLengthDelegate(count: Int) {
+        if (count >= maxLength) {
             counterDelegate?.didReachMaxLength(textField: self)
         }
     }
@@ -204,7 +204,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         }
         
         updateCounterLabel(count: textFieldCharactersCount)
-        shouldCheckForMaxLength(count: textFieldCharactersCount)
+        checkIfNeedsCallDidReachMaxLengthDelegate(count: textFieldCharactersCount)
         
         return shouldChange
     }
