@@ -60,7 +60,7 @@ let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, c
 view.addSubview(textField)
 ```
 
-#### Delegate
+##### Use Delegate
 
 Set `counterDelegate` and enjoy it 🚀:
 
@@ -78,6 +78,8 @@ func didReachMaxLength(textField: TextFieldCounter) {
 
 ## Next Steps
 
+- Add Haptic Feedback
+- Add `UIAppearance` support
 - Add Tests
 - Add Carthage support
 
