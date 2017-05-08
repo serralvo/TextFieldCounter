@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, TextFieldCounterDelegate {
 
-    @IBOutlet weak var textField: TextFieldCounter!
+    @IBOutlet weak var textField1: TextFieldCounter!
+    @IBOutlet weak var textField2: TextFieldCounter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.counterDelegate = self
+        textField1.counterDelegate = self
+        textField2.counterDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
