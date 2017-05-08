@@ -80,6 +80,11 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         self.counterColor = counterColor
         self.limitColor = limitColor
         
+        self.backgroundColor = .white
+        self.layer.borderWidth = 0.35
+        self.layer.cornerRadius = 5.0
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        
         super.delegate = self
         counterLabel = setupCounterLabel()
     }
