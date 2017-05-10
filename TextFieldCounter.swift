@@ -59,10 +59,11 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
      Initializes a new beautiful *TextFieldCounter*.
      
      - parameter frame: The frame of view.
-     - parameter shouldAnimate: Default is `true`.
+     - parameter animate: Default is `true`.
+     - parameter ascending: Default is `true`.
      - parameter limit: By default, if the number is not greater than 0, the limit will be `30`.
-     - parameter colorOfCounterLabel: Default color is `UIColor.lightGray`.
-     - parameter colorOfLimitLabel: Default color is `UIColor.red`.
+     - parameter counterColor: Default color is `UIColor.lightGray`.
+     - parameter limitColor: Default color is `UIColor.red`.
     */
     
     init(frame: CGRect, limit: Int, animate: Bool = true, ascending: Bool = true, counterColor: UIColor = .lightGray, limitColor: UIColor = .red) {
