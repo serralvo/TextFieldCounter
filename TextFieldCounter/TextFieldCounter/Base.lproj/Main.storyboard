@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,9 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example #1 - Animated" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-8p-5Fd" customClass="TextFieldCounter" customModule="TextFieldCounter" customModuleProvider="target">
-                                <rect key="frame" x="27" y="89" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See how it works" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqv-lW-jDg">
+                                <rect key="frame" x="28" y="45" width="319" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example #1 - Animated ascending" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-8p-5Fd" customClass="TextFieldCounter" customModule="TextFieldCounter" customModuleProvider="target">
+                                <rect key="frame" x="28" y="94.5" width="319" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -38,18 +44,11 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="limitColor">
                                         <color key="value" red="0.98039221759999995" green="0.20000001789999999" blue="0.031372550870000002" alpha="1" colorSpace="deviceRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ascending" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="See how it works" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqv-lW-jDg">
-                                <rect key="frame" x="27" y="45" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example #2 - No animation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDJ-Zy-5wj" customClass="TextFieldCounter" customModule="TextFieldCounter" customModuleProvider="target">
-                                <rect key="frame" x="27" y="138" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example #2 - No animation decending" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pDJ-Zy-5wj" customClass="TextFieldCounter" customModule="TextFieldCounter" customModuleProvider="target">
+                                <rect key="frame" x="28" y="140.5" width="319" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -58,15 +57,31 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ascending" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pDJ-Zy-5wj" secondAttribute="trailing" constant="12" id="2Uv-a8-Ie8"/>
+                            <constraint firstItem="pDJ-Zy-5wj" firstAttribute="leading" secondItem="fqv-lW-jDg" secondAttribute="leading" id="8yQ-Ep-aq3"/>
+                            <constraint firstItem="fqv-lW-jDg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="9IS-aX-wJz"/>
+                            <constraint firstItem="pDJ-Zy-5wj" firstAttribute="top" secondItem="hzl-8p-5Fd" secondAttribute="bottom" constant="16" id="CIy-rw-GYg"/>
+                            <constraint firstItem="hzl-8p-5Fd" firstAttribute="top" secondItem="fqv-lW-jDg" secondAttribute="bottom" constant="16" id="FNE-fZ-mv3"/>
+                            <constraint firstItem="hzl-8p-5Fd" firstAttribute="leading" secondItem="fqv-lW-jDg" secondAttribute="leading" id="Gdd-nE-EJM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fqv-lW-jDg" secondAttribute="trailing" constant="12" id="lWw-2L-waB"/>
+                            <constraint firstItem="fqv-lW-jDg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="sRf-8j-4hO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hzl-8p-5Fd" secondAttribute="trailing" constant="12" id="wHn-GT-7J9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField1" destination="hzl-8p-5Fd" id="gdF-f0-zIl"/>
+                        <outlet property="textField2" destination="pDJ-Zy-5wj" id="2gj-kD-Qau"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
 </document>

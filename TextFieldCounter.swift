@@ -18,6 +18,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     // MARK: IBInspectable: Limits and behaviors
     
     @IBInspectable public dynamic var animate : Bool = true
+    @IBInspectable public dynamic var ascending : Bool = true
     @IBInspectable public var maxLength : Int = TextFieldCounter.defaultLength {
         didSet {
             if (!isValidMaxLength(max: maxLength)) {
@@ -64,7 +65,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
      - parameter colorOfLimitLabel: Default color is `UIColor.red`.
     */
     
-    init(frame: CGRect, limit: Int, shouldAnimate: Bool = true, colorOfCounterLabel: UIColor = .lightGray, colorOfLimitLabel: UIColor = .red) {
+    init(frame: CGRect, limit: Int, animate: Bool = true, ascending: Bool = true, counterColor: UIColor = .lightGray, limitColor: UIColor = .red) {
         
         super.init(frame: frame)
         
@@ -74,9 +75,15 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             maxLength = limit
         }
         
-        animate = shouldAnimate
-        counterColor = colorOfCounterLabel
-        limitColor = colorOfLimitLabel
+        self.animate = animate
+        self.ascending = ascending
+        self.counterColor = counterColor
+        self.limitColor = limitColor
+        
+        self.backgroundColor = .white
+        self.layer.borderWidth = 0.35
+        self.layer.cornerRadius = 5.0
+        self.layer.borderColor = UIColor.lightGray.cgColor
         
         super.delegate = self
         counterLabel = setupCounterLabel()
@@ -122,7 +129,11 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     private func updateCounterLabel(count: Int) {
         if count <= maxLength {
-            counterLabel.text = "\(count)"
+            if (ascending) {
+                counterLabel.text = "\(count)"
+            } else {
+                counterLabel.text = "\(maxLength - count)"
+            }
         }
         
         prepareToAnimateCounterLabel(count: count)
