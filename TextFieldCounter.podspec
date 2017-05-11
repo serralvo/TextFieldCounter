@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "TextFieldCounter"
-  s.version      = "0.0.1"
-  s.summary      = "UITextField character counter with lovable UX ❤️. No math skills required."
+  s.version      = "0.0.2"
+  s.summary      = "UITextField character counter with lovable UX 💖. No math skills required 🙃."
   s.description  = "Set max length of UITextField,
                    Show a beautiful and animated label about the limits
                    Easy setup with @IBInspectable"
