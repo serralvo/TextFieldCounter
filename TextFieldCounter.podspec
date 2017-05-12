@@ -3,9 +3,11 @@ Pod::Spec.new do |s|
   s.name         = "TextFieldCounter"
   s.version      = "0.0.1"
   s.summary      = "UITextField character counter with lovable UX 💖. No math skills required 🙃."
-  s.description  = "Set max length of UITextField,
+  s.description  = <<-DESC
+		   Set max length of UITextField,
                    Show a beautiful and animated label about the limits
-                   Easy setup with @IBInspectable"
+                   Easy setup with @IBInspectable
+                   DESC
   s.homepage     = "https://github.com/serralvo/TextFieldCounter"
   s.screenshots  = "https://github.com/serralvo/TextFieldCounter/blob/master/Images/inspector.png?raw=true"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -18,6 +20,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files  = "TextFieldCounter.swift"
-  s.exclude_files = "TextFieldCounter"
+  # s.exclude_files = "TextFieldCounter"
  
 end
