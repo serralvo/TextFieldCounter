@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TextFieldCounter"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "UITextField character counter with lovable UX 💖. No math skills required 🙃."
   s.description  = <<-DESC
 		   Set max length of UITextField,
@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files  = "TextFieldCounter.swift"
-  # s.exclude_files = "TextFieldCounter"
+  s.exclude_files = "TextFieldCounter"
  
 end
