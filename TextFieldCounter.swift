@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TextFieldCounter: UITextField, UITextFieldDelegate {
+open class TextFieldCounter: UITextField, UITextFieldDelegate {
 
     lazy private var counterLabel: UILabel = UILabel()
     
@@ -41,13 +41,13 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     // MARK: Init
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         super.delegate = self
         counterLabel = setupCounterLabel()
     }
     
-    override func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         super.draw(rect)
         rightView = counterLabel
         rightViewMode = .whileEditing
@@ -66,7 +66,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
      - parameter limitColor: Default color is `UIColor.red`.
     */
     
-    init(frame: CGRect, limit: Int, animate: Bool = true, ascending: Bool = true, counterColor: UIColor = .lightGray, limitColor: UIColor = .red) {
+    public init(frame: CGRect, limit: Int, animate: Bool = true, ascending: Bool = true, counterColor: UIColor = .lightGray, limitColor: UIColor = .red) {
         
         super.init(frame: frame)
         
@@ -204,7 +204,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         var shouldChange = false
         let textFieldCharactersCount = getTextFieldCharactersCount(textField: textField, string: string)
