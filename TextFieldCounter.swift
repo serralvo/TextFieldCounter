@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
+@available(iOS 10.0, *)
 class TextFieldCounter: UITextField, UITextFieldDelegate {
 
     lazy private var counterLabel: UILabel = UILabel()
     
     weak var counterDelegate: TextFieldCounterDelegate?
+    var feedbackGenerator: UINotificationFeedbackGenerator?
     
     // MARK: IBInspectable: Limits and behaviors
     
@@ -45,6 +47,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         super.init(coder: aDecoder)
         super.delegate = self
         counterLabel = setupCounterLabel()
+        feedbackGenerator = UINotificationFeedbackGenerator()
     }
     
     override func draw(_ rect: CGRect) {
@@ -185,6 +188,7 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
             break
         case .didReachLimit:
             animateCounterLabelColor(color: limitColor)
+            addHapticFeedBack()
             
             if (animate) {
                 counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
@@ -194,6 +198,9 @@ class TextFieldCounter: UITextField, UITextFieldDelegate {
         default:
             break
         }
+    }
+    private func addHapticFeedBack() {
+        feedbackGenerator?.notificationOccurred(.error)
     }
     
     private func animateCounterLabelColor(color: UIColor) {
