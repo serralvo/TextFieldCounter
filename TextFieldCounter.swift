@@ -186,6 +186,10 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         case .didReachLimit:
             animateCounterLabelColor(color: limitColor)
             
+            if #available(iOS 10.0, *) {
+                fireHapticFeedback()
+            }
+            
             if (animate) {
                 counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
             }
@@ -200,6 +204,15 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
             self.counterLabel.textColor = color
         }, completion: nil)
+    }
+    
+    // MARK: Haptic Feedback
+    
+    private func fireHapticFeedback() {
+        if #available(iOS 10.0, *) {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.warning)
+        }
     }
     
     // MARK: UITextFieldDelegate
