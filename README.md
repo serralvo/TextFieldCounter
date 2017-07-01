@@ -8,9 +8,10 @@
 
 ## Features
 
-- [x] Set max length of UITextField
-- [x] A beautiful and animated label about the limits
-- [x] Easy setup with @IBInspectable
+- [x] Set max length of UITextField.
+- [x] A beautiful and animated label about the limits. Show it by ascending or descending way.
+- [x] Haptic Feedback (iOS 10+).
+- [x] Easy setup with @IBInspectable.
 
 ![TextFieldCounter][demo-image]
 
@@ -56,7 +57,7 @@ import TextFieldCounter
 import TextFieldCounter
 
 let frame = CGRect(x: 20, y: 80, width: 320, height: 30)
-let textField = TextFieldCounter(frame: frame, limit: 30, shouldAnimate: true, colorOfCounterLabel: UIColor.darkGray, colorOfLimitLabel: UIColor.orange)
+let textField = TextFieldCounter(frame: frame, limit: 20, animate: true, ascending: true, counterColor: .black, limitColor: .red)
 
 view.addSubview(textField)
 ```
@@ -79,9 +80,8 @@ func didReachMaxLength(textField: TextFieldCounter) {
 
 ## Next Steps
 
-- Add Haptic Feedback
 - Add `UIAppearance` support
-- Add Tests
+- Add More tests
 - Add Carthage support
 
 ## Contribute
