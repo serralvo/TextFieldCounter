@@ -34,4 +34,26 @@ class TextFieldCounterTests: XCTestCase {
         
         XCTAssertTrue(textField.textField(textField, shouldChangeCharactersIn: range, replacementString: text))
     }
+    
+    func testDeletionOneCharacter() {
+        let textField = TextFieldCounter(frame: CGRect.zero, limit: 10, animate: true, ascending: true, counterColor: .black, limitColor: .red)
+        let initalText = "some text"
+        textField.text = initalText
+        
+        let deletionText = ""
+        let range = NSMakeRange(initalText.characters.count - 2, 1)
+        let _ = textField.textField(textField, shouldChangeCharactersIn: range, replacementString: deletionText)
+        XCTAssertTrue(textField.counterLabel.text == "8")
+    }
+    
+    func testMultipleDeletion() {
+        let textField = TextFieldCounter(frame: CGRect.zero, limit: 20, animate: true, ascending: true, counterColor: .black, limitColor: .red)
+        let initalText = "The quick brown fox"
+        textField.text = initalText
+        
+        let deletionText = ""
+        let range = NSMakeRange(initalText.characters.count - 3, 3) // "fox" word
+        let _ = textField.textField(textField, shouldChangeCharactersIn: range, replacementString: deletionText)
+        XCTAssertTrue(textField.counterLabel.text == "16")
+    }
 }

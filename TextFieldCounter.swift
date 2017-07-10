@@ -11,7 +11,7 @@ import UIKit
 
 open class TextFieldCounter: UITextField, UITextFieldDelegate {
 
-    lazy private var counterLabel: UILabel = UILabel()
+    lazy internal var counterLabel: UILabel = UILabel()
     
     weak var counterDelegate: TextFieldCounterDelegate?
     
