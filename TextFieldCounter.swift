@@ -140,16 +140,17 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         prepareToAnimateCounterLabel(count: count)
     }
     
-    private func getTextFieldCharactersCount(textField: UITextField, string: String) -> Int {
+    private func getTextFieldCharactersCount(textField: UITextField, string: String, changeCharactersIn range: NSRange) -> Int {
         
         var textFieldCharactersCount = 0
         
         if let textFieldText = textField.text {
             
-            textFieldCharactersCount = textFieldText.characters.count + string.characters.count
             
-            if string.isEmpty {
-                textFieldCharactersCount = textFieldCharactersCount - 1
+            if !string.isEmpty {
+                textFieldCharactersCount = textFieldText.characters.count + string.characters.count - range.length
+            } else {
+                textFieldCharactersCount = textFieldText.characters.count - range.length
             }
         }
         
@@ -220,7 +221,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         var shouldChange = false
-        let textFieldCharactersCount = getTextFieldCharactersCount(textField: textField, string: string)
+        let textFieldCharactersCount = getTextFieldCharactersCount(textField: textField, string: string, changeCharactersIn: range)
         
         if string.isEmpty {
             shouldChange = true
