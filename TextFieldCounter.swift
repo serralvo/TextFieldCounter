@@ -112,8 +112,12 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         return label
     }
     
+    private func localizedString(of number: Int) -> String {
+        return String.localizedStringWithFormat("%i", number)
+    }
+    
     private func getCounterLabelWidth() -> Int {
-        let biggestText = "\(maxLength)"
+        let biggestText = localizedString(of: maxLength)
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .left
@@ -131,9 +135,9 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     private func updateCounterLabel(count: Int) {
         if count <= maxLength {
             if (ascending) {
-                counterLabel.text = "\(count)"
+                counterLabel.text = localizedString(of: count)
             } else {
-                counterLabel.text = "\(maxLength - count)"
+                counterLabel.text = localizedString(of: maxLength - count)
             }
         }
         
