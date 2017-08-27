@@ -104,7 +104,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         if let currentFont : UIFont = font {
             label.font = currentFont
             label.textColor = counterColor
-            label.textAlignment = .left
+            label.textAlignment = label.userInterfaceLayoutDirection == .rightToLeft ? .right : .left
             label.lineBreakMode = .byWordWrapping
             label.numberOfLines = 1
         }
@@ -256,6 +256,14 @@ extension UIView {
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform.identity
         }, completion: nil)
+    }
+    
+    var userInterfaceLayoutDirection: UIUserInterfaceLayoutDirection {
+        if #available(iOS 9.0, *) {
+            return UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
+        } else {
+            return UIApplication.shared.userInterfaceLayoutDirection
+        }
     }
     
 }
