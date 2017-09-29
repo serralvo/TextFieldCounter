@@ -126,7 +126,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         var size : CGSize = CGSize()
         
         if let currentFont = font {
-            size = biggestText.size(attributes: [NSFontAttributeName: currentFont, NSParagraphStyleAttributeName: paragraph])
+            size = biggestText.size(withAttributes: [NSAttributedStringKey.font: currentFont, NSAttributedStringKey.paragraphStyle: paragraph])
         }
         
         return Int(size.width) + 15
