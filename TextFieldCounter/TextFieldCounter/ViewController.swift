@@ -21,7 +21,7 @@ class ViewController: UIViewController, TextFieldCounterDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = UIColor(colorLiteralRed: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
     }
 
     func didReachMaxLength(textField: TextFieldCounter) {
