@@ -98,7 +98,7 @@ Created by Fabricio Serralvo – [serralvo.co](https://serralvo.co)
 
 Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@rogerluan](https://github.com/rogerluan)
 
-[swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-image]:https://img.shields.io/badge/swift-4.0-orange.svg
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
