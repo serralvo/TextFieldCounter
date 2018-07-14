@@ -2,7 +2,7 @@
 //  TextFieldCounter.swift
 //  TextFieldCounter
 //
-//  Created by Fabricio Serralvo on 07/12/16.
+//  Created by Fabricio Serralvo on 12/7/16.
 //  Copyright © 2016 Fabricio Serralvo. All rights reserved.
 //
 
@@ -16,13 +16,13 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     weak var counterDelegate: TextFieldCounterDelegate?
     
     // MARK: -
-    private weak var customDelegate: UITextFieldDelegate?
+    private weak var _delegate: UITextFieldDelegate?
     open override var delegate: UITextFieldDelegate? {
         set {
-            self.customDelegate = newValue
+            self._delegate = newValue
         }
         get {
-            return self.customDelegate
+            return self._delegate
         }
     }
     
@@ -249,19 +249,19 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate Forwarding
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.delegate?.textFieldDidBeginEditing?(self)
+        delegate?.textFieldDidBeginEditing?(self)
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        self.delegate?.textFieldDidEndEditing?(self)
+        delegate?.textFieldDidEndEditing?(self)
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return self.delegate?.textFieldShouldReturn?(_:self) ?? true
+        return delegate?.textFieldShouldReturn?(self) ?? true
     }
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return self.delegate?.textFieldShouldClear?(_:self) ?? true
+        return delegate?.textFieldShouldClear?(self) ?? true
     }
     
 }
