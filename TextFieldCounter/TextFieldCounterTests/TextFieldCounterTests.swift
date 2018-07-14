@@ -41,7 +41,7 @@ class TextFieldCounterTests: XCTestCase {
         textField.text = initalText
         
         let deletionText = ""
-        let range = NSMakeRange(initalText.characters.count - 2, 1)
+        let range = NSMakeRange(initalText.count - 2, 1)
         let _ = textField.textField(textField, shouldChangeCharactersIn: range, replacementString: deletionText)
         XCTAssertTrue(textField.counterLabel.text == "8")
     }
@@ -52,7 +52,7 @@ class TextFieldCounterTests: XCTestCase {
         textField.text = initalText
         
         let deletionText = ""
-        let range = NSMakeRange(initalText.characters.count - 3, 3) // "fox" word
+        let range = NSMakeRange(initalText.count - 3, 3) // "fox" word
         let _ = textField.textField(textField, shouldChangeCharactersIn: range, replacementString: deletionText)
         XCTAssertTrue(textField.counterLabel.text == "16")
     }
