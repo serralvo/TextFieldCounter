@@ -19,7 +19,7 @@ class TextFieldCounterTests: XCTestCase {
         super.tearDown()
     }
     
-    func testTextGreaterThanTheLimit() {
+    func test_TextFieldCounter_Text_WhetherGreaterThanTheLimit() {
         let textField = TextFieldCounter(frame: CGRect.zero, limit: 10, animate: true, ascending: true, counterColor: .black, limitColor: .red)
         let text = "hello hello hello"
         let range = NSMakeRange(0, 0)
@@ -27,7 +27,7 @@ class TextFieldCounterTests: XCTestCase {
         XCTAssertFalse(textField.textField(textField, shouldChangeCharactersIn: range, replacementString: text))
     }
     
-    func testTextLessThanTheLimit() {
+    func test_TextFieldCounter_Text_WhetherLessThanTheLimit() {
         let textField = TextFieldCounter(frame: CGRect.zero, limit: 10, animate: true, ascending: true, counterColor: .black, limitColor: .red)
         let text = "hello"
         let range = NSMakeRange(0, 0)
@@ -35,7 +35,7 @@ class TextFieldCounterTests: XCTestCase {
         XCTAssertTrue(textField.textField(textField, shouldChangeCharactersIn: range, replacementString: text))
     }
     
-    func testDeletionOneCharacter() {
+    func test_TextFieldCounter_Character_DeletionOfOneCharacter() {
         let textField = TextFieldCounter(frame: CGRect.zero, limit: 10, animate: true, ascending: true, counterColor: .black, limitColor: .red)
         let initalText = "some text"
         textField.text = initalText
@@ -46,7 +46,7 @@ class TextFieldCounterTests: XCTestCase {
         XCTAssertTrue(textField.counterLabel.text == "8")
     }
     
-    func testMultipleDeletion() {
+    func test_TextFieldCounter_Character_MultipleDeletionOfCharacters() {
         let textField = TextFieldCounter(frame: CGRect.zero, limit: 20, animate: true, ascending: true, counterColor: .black, limitColor: .red)
         let initalText = "The quick brown fox"
         textField.text = initalText
