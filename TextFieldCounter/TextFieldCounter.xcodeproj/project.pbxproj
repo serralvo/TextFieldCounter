@@ -14,6 +14,7 @@
 		02A9691C1DF8D4BC006AE374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A9691B1DF8D4BC006AE374 /* Assets.xcassets */; };
 		02A9691F1DF8D4BC006AE374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A9691D1DF8D4BC006AE374 /* LaunchScreen.storyboard */; };
 		02A969271DF8D4D1006AE374 /* TextFieldCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A969261DF8D4D1006AE374 /* TextFieldCounter.swift */; };
+		02C5244423B56C96002B9AC0 /* TextFieldCounterDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5244323B56C96002B9AC0 /* TextFieldCounterDelegateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		02A9691E1DF8D4BC006AE374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A969201DF8D4BC006AE374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02A969261DF8D4D1006AE374 /* TextFieldCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCounter.swift; path = ../TextFieldCounter.swift; sourceTree = "<group>"; };
+		02C5244323B56C96002B9AC0 /* TextFieldCounterDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCounterDelegateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				0239B7C91F084E6800606E39 /* TextFieldCounterTests.swift */,
 				0239B7CB1F084E6800606E39 /* Info.plist */,
+				02C5244323B56C96002B9AC0 /* TextFieldCounterDelegateTests.swift */,
 			);
 			path = TextFieldCounterTests;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0239B7CA1F084E6800606E39 /* TextFieldCounterTests.swift in Sources */,
+				02C5244423B56C96002B9AC0 /* TextFieldCounterDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
