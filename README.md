@@ -8,18 +8,19 @@
 
 ## Features
 
-- [x] Set max length of UITextField.
+- [x] Set max length of `UITextField`.
 - [x] A beautiful and animated label about the limits. Show it by ascending or descending way.
-- [x] Haptic Feedback (iOS 10+).
-- [x] Easy setup with @IBInspectable.
+- [x] Haptic Feedback.
+- [x] Easy setup with `@IBInspectable`.
 
 ![TextFieldCounter][demo-image]
 
 ## Requirements
 
-- iOS 8.0+
-- Xcode 8.0
-- ARC
+|TextFieldCounter Version| 1.1.0 | 1.0.4|
+|---|---|---|
+|iOS Version | 10.0+| 8.0+|
+|Xcode Version | 11.2| 8|
 
 ## Installation
 
@@ -27,7 +28,7 @@
 You can use [CocoaPods](http://cocoapods.org/) to install `TextFieldCounter` by adding it to your `Podfile`:
 
 ```ruby
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 pod 'TextFieldCounter'
 ```
@@ -98,7 +99,7 @@ Created by Fabricio Serralvo – [serralvo.co](https://serralvo.co)
 
 Special thanks 👍 to [@ciceroduarte](https://github.com/ciceroduarte) and [@rogerluan](https://github.com/rogerluan)
 
-[swift-image]:https://img.shields.io/badge/swift-4.0-orange.svg
+[swift-image]:https://img.shields.io/badge/swift-5.0-orange.svg
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
