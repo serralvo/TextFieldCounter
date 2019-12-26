@@ -10,15 +10,7 @@ import XCTest
 @testable import TextFieldCounter
 
 class TextFieldCounterTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
+        
     func test_TextFieldCounter_Text_WhetherGreaterThanTheLimit() {
         let textField = TextFieldCounter(frame: CGRect.zero, limit: 10, animate: true, ascending: true, counterColor: .black, limitColor: .red)
         let text = "hello hello hello"
