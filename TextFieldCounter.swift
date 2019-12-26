@@ -200,11 +200,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
             animateCounterLabelColor(color: counterColor)
         case .didReachLimit:
             animateCounterLabelColor(color: limitColor)
-            
-            if #available(iOS 10.0, *) {
-                fireHapticFeedback()
-            }
-            
+            fireHapticFeedback()
             if (animate) {
                 counterLabel.shakeTo(transform: CGAffineTransform(translationX: 5, y: 0), duration: 0.3)
             }
@@ -222,10 +218,8 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     // MARK: - Haptic Feedback
     
     private func fireHapticFeedback() {
-        if #available(iOS 10.0, *) {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.warning)
-        }
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
     }
     
     // MARK: - UITextFieldDelegate
@@ -287,11 +281,7 @@ extension UIView {
     }
     
     var userInterfaceLayoutDirection: UIUserInterfaceLayoutDirection {
-        if #available(iOS 9.0, *) {
-            return UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
-        } else {
-            return UIApplication.shared.userInterfaceLayoutDirection
-        }
+        return UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
     }
     
 }
