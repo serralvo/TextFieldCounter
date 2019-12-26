@@ -11,7 +11,7 @@ language:
 osx_image: xcode11.2
 
 script:
-  - xcodebuild -scheme 'TextFieldCounter' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.2' build test | xcpretty -c
+  - xcodebuild -project TextFieldCounter/TextFieldCounter.xcodeproj -scheme 'TextFieldCounter' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.2' build test | xcpretty -c
   
 after_success:
   - bash <(curl -s https://codecov.io/bash)
