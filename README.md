@@ -4,6 +4,7 @@
 [![Swift Version][swift-image]][swift-url]
 [![License][license-image]][license-url]
 [![Build Status][build-status-image]][build-status-url]
+[![codecov](https://codecov.io/gh/serralvo/TextFieldCounter/branch/master/graph/badge.svg)](https://codecov.io/gh/serralvo/TextFieldCounter)
 ![CocoaPods][pod-version-image]
 
 ## Features
