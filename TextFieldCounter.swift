@@ -22,13 +22,13 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     weak var counterDelegate: TextFieldCounterDelegate?
     
     // MARK: - IBInspectable: Limits and behaviors
-    @IBInspectable public dynamic var animate : Bool = true
-    @IBInspectable public dynamic var ascending : Bool = true
-    @IBInspectable public dynamic var counterColor : UIColor = .lightGray
+    @IBInspectable public dynamic var animate: Bool = true
+    @IBInspectable public dynamic var ascending: Bool = true
+    @IBInspectable public dynamic var counterColor: UIColor = .lightGray
     @IBInspectable public dynamic var limitColor: UIColor = .red
-    @IBInspectable public var maxLength : Int = TextFieldCounter.defaultLength {
+    @IBInspectable public var maxLength: Int = TextFieldCounter.defaultLength {
         didSet {
-            if (!isValidMaxLength(max: maxLength)) {
+            if (isValidMaxLength(max: maxLength) == false) {
                 maxLength = TextFieldCounter.defaultLength
             }
         }
@@ -58,7 +58,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         super.delegate = self
-        counterLabel = setupCounterLabel()
+        counterLabel = createCounterLabel()
     }
     
     override open func draw(_ rect: CGRect) {
@@ -68,17 +68,16 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
     }
     
     // MARK: - Public Methods
-    /**
-     Initializes a new beautiful *TextFieldCounter*.
-     
-     - parameter frame: The frame of view.
-     - parameter animate: Default is `true`.
-     - parameter ascending: Default is `true`.
-     - parameter limit: By default, if the number is not greater than 0, the limit will be `30`.
-     - parameter counterColor: Default color is `UIColor.lightGray`.
-     - parameter limitColor: Default color is `UIColor.red`.
-    */
-    
+    ///
+    /// Initializes a new beautiful *TextFieldCounter* programmatically.
+    ///
+    /// - Parameters:
+    ///   - frame: The frame of UITextField.
+    ///   - limit: Defines the max lenght of UITextField. By default, if the number is not greater than 0, the limit will be `30`.
+    ///   - animate: Indicates if counter label should animates when user reachs limit.
+    ///   - ascending: Indicates if counter should be by ascending or descending way.
+    ///   - counterColor: The color of label that displays the counter.
+    ///   - limitColor: The color of label when user reachs limit.
     public init(frame: CGRect,
                 limit: Int,
                 animate: Bool = true,
@@ -94,7 +93,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         self.maxLength = self.calculateMaxLenght(withLimit: limit)
         
         self.setupTextFieldStyle()
-        self.counterLabel = setupCounterLabel()
+        self.counterLabel = createCounterLabel()
         
         super.delegate = self
     }
@@ -122,8 +121,8 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         self.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    private func setupCounterLabel() -> UILabel {
-        let fontFrame = CGRect(x: 0, y: 0, width: counterLabelWidth(), height: Int(frame.height))
+    private func createCounterLabel() -> UILabel {
+        let fontFrame = CGRect(x: 0, y: 0, width: calculateCounterLabelWidth(), height: Int(frame.height))
         let label = UILabel(frame: fontFrame)
         
         if let currentFont: UIFont = font {
@@ -141,7 +140,7 @@ open class TextFieldCounter: UITextField, UITextFieldDelegate {
         return String.localizedStringWithFormat("%i", number)
     }
     
-    private func counterLabelWidth() -> Int {
+    private func calculateCounterLabelWidth() -> Int {
         let biggestText = localizedString(of: maxLength)
         
         let paragraph = NSMutableParagraphStyle()
